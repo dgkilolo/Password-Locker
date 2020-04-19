@@ -11,3 +11,11 @@ class User:
     creates instance variables to take in each new instance of our class.
     the two instances take up the username and password of the new user.
     '''
+
+  def append_account(self):
+    '''
+    append_account method save new account objects into the users_list.
+    '''
+    User.users_list.append(self)
+  
+  
