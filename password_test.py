@@ -1,5 +1,6 @@
 import unittest
 from passwordLocker import User
+from passwordLocker import Credentials
 
 class TestUser(unittest.TestCase):
   '''
@@ -13,6 +14,7 @@ class TestUser(unittest.TestCase):
     Set up method that runs before each taste case, creating the results we expect.
     '''
     self.new_account = User("David","boot")
+    self.new_application = Credentials("Facebook", "word")
 
   def test_initialization(self): 
     '''
@@ -20,6 +22,9 @@ class TestUser(unittest.TestCase):
     '''
     self.assertEqual(self.new_account.username,"David")
     self.assertEqual(self.new_account.password,"boot")
+
+    self.assertEqual(self.new_application.app,"Facebook")
+    self.assertEqual(self.new_application.passwordApp,"word")
 
 
 if __name__ == '__main__':

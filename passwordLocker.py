@@ -18,4 +18,19 @@ class User:
     '''
     User.users_list.append(self)
   
+
+class Credentials:
+  '''
+  Class generatess new instances of accounts that the user would like to store a password for.
+  '''
+  credentials_list = [] #an empty list for the users accounts
+
+  def __init__ (self, application_name, application_password):
+    self.app = application_name
+    self.passwordApp = application_password
+    '''
+    Creates new instances for our class.
+    The new instances take the application name for which the user would like to store/generate a password.
+    '''
+    
   
