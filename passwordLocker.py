@@ -32,5 +32,11 @@ class Credentials:
     Creates new instances for our class.
     The new instances take the application name for which the user would like to store/generate a password.
     '''
-    
+  
+  def append_application(self):
+    '''
+    append_application method saves the applications into the credentials list
+    '''
+    Credentials.credentials_list.append(self)
+  
   
