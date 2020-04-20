@@ -25,6 +25,14 @@ class User:
       if user.user_name == user:
         return user
   
+  @classmethod
+  def username_authentication(cls, username, password):
+    '''
+    Method to authenticate username and password.
+    '''
+    for user in cls.users_list:
+      if user.username == username and user.password == password:
+        return password 
 
 class Credentials:
   '''

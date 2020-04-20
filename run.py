@@ -44,6 +44,12 @@ def finding_credential(namez):
 
 def find_users(user):
   return User.users_list(user)
+
+def user_authentication (username, password):
+  '''
+  Function to authenticate users.
+  '''
+  return User.username_authentication(username,password)
  
 
 def main():
@@ -73,18 +79,22 @@ def main():
       print("Sign into your account.")
       print('-'*10)
       print("Enter username...")
-      yourUsername = input()
-      # enteredUsername = find_users(yourUsername)
+      yourUsername = input()      
       print("Enter password...")
       yourPassword = input()
 
-      # if enteredUsername == find_users(yourUsername):
-      #   break
-      # elif yourUsername != User.users_list:
-      #   print("Enter a valid username.")
-
+      authenticated_password = user_authentication(yourUsername,yourPassword)
+      if authenticated_password == yourPassword:
+        print("You have logged in Well.")
+      else:
+        print("Invalid username or password.")
+        continue
     elif visitor_response == 'ex':
       break
+
+    else:
+      print("Invalid input")
+      
 
     while True:    
       print("What would you like to do?")
@@ -121,8 +131,13 @@ def main():
         print("Enter the app name that you want to delete.")      
         deleteApp = input()
         found_credential = finding_credential(deleteApp)
-        delete_credentials(found_credential)
-        print(f"Been deleted. {deleteApp} ")
+        
+        if finding_credential(deleteApp):
+          delete_credentials(found_credential)
+          print(f"Been deleted. {deleteApp} ")
+        else:
+          print("Not found.")
+        
 
       elif short_code == 'fc':
         print("Enter the name of the app you are looking for.")
@@ -134,7 +149,10 @@ def main():
 
       elif short_code == 'ex':
         print("bye...")
-        break    
+        break   
+
+      else:
+        print("Invalid input.") 
             
      
        
