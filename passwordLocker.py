@@ -26,7 +26,7 @@ class Credentials:
   credentials_list = [] #an empty list for the users accounts
 
   def __init__ (self, application_name, application_password):
-    self.app = application_name
+    self.application_name = application_name
     self.passwordApp = application_password
     '''
     Creates new instances for our class.
@@ -51,4 +51,10 @@ class Credentials:
     Methods that deletes a saved credential
     '''
     Credentials.credentials_list.remove(self)
+
+  @classmethod
+  def find_credential(cls, namez):
+    for credential in cls.credentials_list:
+      if credential.application_name == namez:
+        return credential
   

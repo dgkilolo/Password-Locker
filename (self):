@@ -1,0 +1,9 @@
+[33m3ad1f3c[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m adds test to delete credentials from credentials list.
+[33m45d74ab[m displays the credentials the user has input for their apps.
+[33m3c8f072[m adds test to check the credentials being displayed.
+[33m94d16da[m enables user to enter the application and password and saves them.
+[33m4466ddd[m ensures that the test checks if objects for the Credentials class are initialized properly.
+[33mf374770[m enables user to create an account as saves their credentials.
+[33mba721bd[m adds the first test checking that objects are initialized correctly.
+[33m33bf8b2[m adds initial files to test and run the program.
+[33m9117784[m[33m ([m[1;31morigin/master[m[33m)[m initial commit
