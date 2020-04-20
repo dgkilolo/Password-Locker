@@ -18,6 +18,13 @@ class User:
     '''
     User.users_list.append(self)
   
+  
+  @classmethod
+  def find_user (cls,user):
+    for user in cls.users_list:
+      if user.user_name == user:
+        return user
+  
 
 class Credentials:
   '''
@@ -27,7 +34,7 @@ class Credentials:
 
   def __init__ (self, application_name, application_password):
     self.application_name = application_name
-    self.passwordApp = application_password
+    self.application_password = application_password
     '''
     Creates new instances for our class.
     The new instances take the application name for which the user would like to store/generate a password.
@@ -53,12 +60,15 @@ class Credentials:
     Credentials.credentials_list.remove(self)
 
   @classmethod
-  def find_credential(cls, namez):
+  def find_credential(cls, name):
+    '''
+    Method that takes in a name and returns a credential that matches that name.
+    '''
     for credential in cls.credentials_list:
-      if credential.application_name == namez:
+      if credential.application_name == name:
         return credential
 
-  @classmethod
-  def generate_password(cls):
-    
+  # @classmethod
+  # def generate_password(cls):
+
   

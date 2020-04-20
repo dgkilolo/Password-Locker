@@ -41,101 +41,102 @@ def delete_credentials(theApp):
 
 def finding_credential(namez):
   return Credentials.find_credential(namez)
+
+def find_users(user):
+  return User.users_list(user)
  
 
 def main():
-  print("Welcome to Password Locker")
-  print("Enter your name")
+  print("Welcome to PASSWORD LOCKER")
+  print('--'*15)
+  print("Enter your name...")
   visitors_name = input()
-  print(f"Hello {visitors_name}. Do you have an account?   y - Yes   n - No")
-  visitor_response = input()
+  # print(f"Hello {visitors_name}.\n Do you have an account? \n  y - Yes \n  n - No \n  ex - exit")
+  # visitor_response = input()
   while True:
+    print(f"Hello {visitors_name}.\n Do you have an account? \n  y - Yes \n  n - No \n  ex - exit")
+    visitor_response = input()
     if visitor_response == 'n':
       print("Create account")
-      print("-"*11)
+      print("-"*17)
       print("Your username...")
       username = input()
       print("Your password...")
       password = input()    
 
       save_account(create_account(username, password)) #creates and save the new account
-      print('/n')
+      print('\n')
       print(f"New account: {username}   password: {password} created.")
-      print('/n')
-      break
+      print('\n')
+      
     elif visitor_response == 'y':
       print("Sign into your account.")
       print('-'*10)
       print("Enter username...")
       yourUsername = input()
+      # enteredUsername = find_users(yourUsername)
       print("Enter password...")
       yourPassword = input()
 
-      if yourUsername == User.users_list:
-        break
-      elif yourUsername != User.users_list:
-        print("Enter a valid username.")
-      
+      # if enteredUsername == find_users(yourUsername):
+      #   break
+      # elif yourUsername != User.users_list:
+      #   print("Enter a valid username.")
 
-  while True:
-    print(f"Welcome {username}.")
-    print("What would you like to do?")
-    print("Use the shortcodes provided:  da - display applications  cn - create new application password  dl - delete credential   fc - find   ex - exit")
-    short_code = input()
+    elif visitor_response == 'ex':
+      break
 
-    if short_code == 'cn':
-      print("Application for which password is to be saved.")
-      print('-'*10)
-      print("New App Name...")
-      appName = input()
-      print("App password...")
-      appPassword = input()
+    while True:    
+      print("What would you like to do?")
+      print("Use the shortcodes provided: \n da - display applications \n cn - create new application password \n dl - delete credential \n fc - find \n ex - exit")
+      short_code = input()
+      print('\n')
 
-      save_application(create_application(appName, appPassword)) #create new application name and create it's password
-      print('/n')
-      print(f"New Application: {appName}, password: {appPassword} is saved.")
-
-    elif short_code == 'da':
-      if display_credentials():
-        print("A list of your saved credentials")
+      if short_code == 'cn':
+        print("Application for which password is to be saved.")
         print('-'*10)
-        print("App:       Password:")
-        for credential in display_credentials():
-          print(f"{credential.application_name}    {credential.passwordApp} ")
-        print('/n')
-      else:
-        print('/n')
-        print("No credentials to display")
-        print('/n')    
-  
-    elif short_code == 'dl':
-      print("Enter the app name that you want to delete.")
-      print('/n')
-      deleteApp = input()
-      kilolo = finding_credential(deleteApp)
-      delete_credentials(kilolo)
-      print(f"Been deleted. {deleteApp} ")
+        print("New App Name...")
+        appName = input()
+        print("App password...")
+        appPassword = input()
 
-    elif short_code == 'fc':
-      print("Enter the name of the app you are looking for.")
-      searched_app = input()
-      searched_credential = finding_credential(searched_app)
-      print(f"We have found {searched_credential.application_name} ")
-      
+        save_application(create_application(appName, appPassword)) #create new application name and create it's password
+        print('\n')
+        print(f"New Application: {appName}, password: {appPassword} is saved.")
+
+      elif short_code == 'da':
+        if display_credentials():
+          print("Saved Credentials")
+          print('--'*12)
+          print("App:       Password:")
+          for credential in display_credentials():
+            print(f"{credential.application_name}    {credential.application_password} ")
+          print('\n')
+        else:
+          print('\n')
+          print("No credentials to display")
+          print('\n')    
+    
+      elif short_code == 'dl':
+        print("Enter the app name that you want to delete.")      
+        deleteApp = input()
+        found_credential = finding_credential(deleteApp)
+        delete_credentials(found_credential)
+        print(f"Been deleted. {deleteApp} ")
+
+      elif short_code == 'fc':
+        print("Enter the name of the app you are looking for.")
+        searched_app = input()
+        searched_credential = finding_credential(searched_app)
+        print(f"We have found {searched_credential.application_name} {searched_credential.application_password} ")
+        print('\n')
 
 
-    elif short_code == 'ex':
-      print("bye...")
-      continue
-        
-      
-      
+      elif short_code == 'ex':
+        print("bye...")
+        break    
+            
      
        
-
-
-
-
-
 if __name__ == "__main__":
   main()
