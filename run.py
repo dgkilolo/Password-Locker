@@ -1,5 +1,8 @@
+import random
+import string
 from passwordLocker import User
 from passwordLocker import Credentials
+
 
 def create_account(user_name, user_password):
   '''
@@ -50,6 +53,13 @@ def user_authentication (username, password):
   Function to authenticate users.
   '''
   return User.username_authentication(username,password)
+
+def autogenerate_password():
+  '''
+  Generate a random password for the application.
+  '''
+  characater_pool = string.ascii_letters + string.digits
+  return "".join((random.choice(characater_pool) for i in range(8)))
  
 
 def main():
@@ -103,16 +113,31 @@ def main():
       print('\n')
 
       if short_code == 'cn':
-        print("Application for which password is to be saved.")
-        print('-'*10)
-        print("New App Name...")
-        appName = input()
-        print("App password...")
-        appPassword = input()
+
+        print("Auto generate password? \n y - Yes \n n - No ")
+        auto_choice = input()
+
+        if auto_choice == 'n':
+          print("Application for which password is to be saved.")
+          print('-'*10)
+          print("New App Name...")
+          appName = input()
+          print("App password...")
+          appPassword = input()
+
+        elif auto_choice == 'y':
+          print("Application for which password is to be saved.")
+          print('-'*10)
+          print("New App Name...")
+          appName = input()
+          print("App password...")
+          appPassword = autogenerate_password()
 
         save_application(create_application(appName, appPassword)) #create new application name and create it's password
         print('\n')
         print(f"New Application: {appName}, password: {appPassword} is saved.")
+
+        
 
       elif short_code == 'da':
         if display_credentials():
