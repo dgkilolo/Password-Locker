@@ -26,6 +26,12 @@ class TestUser(unittest.TestCase):
     self.assertEqual(self.new_application.app,"Facebook")
     self.assertEqual(self.new_application.passwordApp,"word")
 
+  def test_display_credentials(self):
+    '''
+    Method that returns a list of the credentials saved.
+    '''
+    self.assertEqual(Credentials.display_applications(), Credentials.credentials_list)
+
 
 if __name__ == '__main__':
   unittest.main()
