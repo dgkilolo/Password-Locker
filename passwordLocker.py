@@ -45,4 +45,10 @@ class Credentials:
     Method that returns the credentials list.
     '''
     return cls.credentials_list
+
+  def delete_credential(self):
+    '''
+    Methods that deletes a saved credential
+    '''
+    Credentials.credentials_list.remove(self)
   

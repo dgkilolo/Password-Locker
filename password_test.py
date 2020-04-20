@@ -32,6 +32,17 @@ class TestUser(unittest.TestCase):
     '''
     self.assertEqual(Credentials.display_applications(), Credentials.credentials_list)
 
+  def test_delete_credential(self):
+    '''
+    Test to remove credential from the credentials list
+    '''
+    self.new_application.append_application()
+    test_credential = Credentials("Twitter","bird") #new credential
+    test_credential.append_application()
+
+    self.new_application.delete_credential() #method to delete credential object
+    self.assertEqual(len(Credentials.credentials_list),1)
+
 
 if __name__ == '__main__':
   unittest.main()
