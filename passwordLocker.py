@@ -57,4 +57,8 @@ class Credentials:
     for credential in cls.credentials_list:
       if credential.application_name == namez:
         return credential
+
+  @classmethod
+  def generate_password(cls):
+    
   
