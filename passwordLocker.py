@@ -21,6 +21,9 @@ class User:
   
   @classmethod
   def find_user (cls,user):
+    '''
+    Method that takes in the username and returns that credential from the list if it exists.
+    '''
     for user in cls.users_list:
       if user.user_name == user:
         return user
@@ -76,7 +79,6 @@ class Credentials:
       if credential.application_name == name:
         return credential
 
-  # @classmethod
-  # def generate_password(cls):
+  
 
   

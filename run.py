@@ -70,8 +70,9 @@ def main():
   # print(f"Hello {visitors_name}.\n Do you have an account? \n  y - Yes \n  n - No \n  ex - exit")
   # visitor_response = input()
   while True:
-    print(f"Hello {visitors_name}.\n Do you have an account? \n  y - Yes \n  n - No \n  ex - exit")
+    print(f"Hello {visitors_name}.\n \n Do you have an account? \n  y - Yes \n  n - No \n  ex - exit")
     visitor_response = input()
+    print('\n')
     if visitor_response == 'n':
       print("Create account")
       print("-"*17)
@@ -82,12 +83,14 @@ def main():
 
       save_account(create_account(username, password)) #creates and save the new account
       print('\n')
+      print('-'*3)
       print(f"New account: {username}   password: {password} created.")
+      print('-'*3)
       print('\n')
       
     elif visitor_response == 'y':
       print("Sign into your account.")
-      print('-'*10)
+      print('--'*12)
       print("Enter username...")
       yourUsername = input()      
       print("Enter password...")
@@ -95,18 +98,32 @@ def main():
 
       authenticated_password = user_authentication(yourUsername,yourPassword)
       if authenticated_password == yourPassword:
-        print("You have logged in Well.")
+        print('\n')
+        print('-'*3)
+        print("Successfully Logged In.")
+        print(f"Welcome, {yourUsername}.")
+        print('-'*3)
+        print('\n')
       else:
+        print('\n')
+        print('*'*3)
         print("Invalid username or password.")
+        print('*'*3)
+        print('\n')
         continue
     elif visitor_response == 'ex':
+      print("See you later :)")
       break
 
     else:
+      print('*'*3)
       print("Invalid input")
+      print('*'*3)
+      print('\n')
+      continue
       
 
-    while True:    
+    while True:       
       print("What would you like to do?")
       print("Use the shortcodes provided: \n da - display applications \n cn - create new application password \n dl - delete credential \n fc - find \n ex - exit")
       short_code = input()
@@ -118,7 +135,7 @@ def main():
         auto_choice = input()
 
         if auto_choice == 'n':
-          print("Application for which password is to be saved.")
+          print("Credentials to be Saved.")
           print('-'*10)
           print("New App Name...")
           appName = input()
@@ -126,30 +143,42 @@ def main():
           appPassword = input()
 
         elif auto_choice == 'y':
-          print("Application for which password is to be saved.")
+          print('\n')
+          print("Credentials to be Saved. :auto")
           print('-'*10)
           print("New App Name...")
           appName = input()
           print("App password...")
           appPassword = autogenerate_password()
 
+        else:
+          print('\n')
+          print('*'*3)
+          print("Invalid Input")
+          print('*'*3)
+          print('\n')
+          continue
         save_application(create_application(appName, appPassword)) #create new application name and create it's password
         print('\n')
+        print('-'*3)
         print(f"New Application: {appName}, password: {appPassword} is saved.")
+        print('-'*3)
+        print('\n')
 
         
 
       elif short_code == 'da':
         if display_credentials():
           print("Saved Credentials")
-          print('--'*12)
+          print('--'*9)
           print("App:       Password:")
           for credential in display_credentials():
             print(f"{credential.application_name}    {credential.application_password} ")
           print('\n')
         else:
-          print('\n')
+          print('*'*3)
           print("No credentials to display")
+          print('*'*3)
           print('\n')    
     
       elif short_code == 'dl':
@@ -159,25 +188,47 @@ def main():
         
         if finding_credential(deleteApp):
           delete_credentials(found_credential)
-          print(f"Been deleted. {deleteApp} ")
+          print('\n')
+          print('-'*3)
+          print(f"{deleteApp} has been Deleted. ")
+          print('-'*3)
+          print('\n')
         else:
-          print("Not found.")
-        
+          print('\n')
+          print('*'*3)
+          print(f" {deleteApp}; Not found.")
+          print('*'*3)
+          print('\n')
 
       elif short_code == 'fc':
         print("Enter the name of the app you are looking for.")
         searched_app = input()
         searched_credential = finding_credential(searched_app)
-        print(f"We have found {searched_credential.application_name} {searched_credential.application_password} ")
-        print('\n')
+
+        if finding_credential(searched_app):
+          print('\n')
+          print('-'*3)
+          print(f"We have found   {searched_credential.application_name} : {searched_credential.application_password} ")
+          print('-'*3)
+          print('\n')
+        else:
+          print('\n')
+          print('*'*3)
+          print(f" {searched_app} Not Found. ")
+          print('*'*3)
+          print('\n')
+        
 
 
       elif short_code == 'ex':
-        print("bye...")
+        print(f"See you later {username}")
         break   
 
       else:
+        print('*'*3)
         print("Invalid input.") 
+        print('*'*3)
+        print('\n')
             
      
        
