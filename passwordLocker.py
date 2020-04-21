@@ -16,8 +16,7 @@ class User:
     '''
     append_account method save new account objects into the users_list.
     '''
-    User.users_list.append(self)
-  
+    User.users_list.append(self)  
   
   @classmethod
   def find_user (cls,user):

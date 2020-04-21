@@ -3,7 +3,6 @@ import string
 from passwordLocker import User
 from passwordLocker import Credentials
 
-
 def create_account(user_name, user_password):
   '''
   Function to create a new account.
@@ -59,16 +58,13 @@ def autogenerate_password():
   Generate a random password for the application.
   '''
   characater_pool = string.ascii_letters + string.digits
-  return "".join((random.choice(characater_pool) for i in range(8)))
- 
+  return "".join((random.choice(characater_pool) for i in range(8))) 
 
 def main():
   print("Welcome to PASSWORD LOCKER")
   print('--'*15)
   print("Enter your name...")
-  visitors_name = input()
-  # print(f"Hello {visitors_name}.\n Do you have an account? \n  y - Yes \n  n - No \n  ex - exit")
-  # visitor_response = input()
+  visitors_name = input()  
   while True:
     print(f"Hello {visitors_name}.\n \n Do you have an account? \n  y - Yes \n  n - No \n  ex - exit")
     visitor_response = input()
@@ -120,8 +116,7 @@ def main():
       print("Invalid input")
       print('*'*3)
       print('\n')
-      continue
-      
+      continue      
 
     while True:       
       print("What would you like to do?")
@@ -158,14 +153,13 @@ def main():
           print('*'*3)
           print('\n')
           continue
+
         save_application(create_application(appName, appPassword)) #create new application name and create it's password
         print('\n')
         print('-'*3)
         print(f"New Application: {appName}, password: {appPassword} is saved.")
         print('-'*3)
-        print('\n')
-
-        
+        print('\n')        
 
       elif short_code == 'da':
         if display_credentials():
@@ -216,21 +210,19 @@ def main():
           print('*'*3)
           print(f" {searched_app} Not Found. ")
           print('*'*3)
-          print('\n')
-        
-
+          print('\n')       
 
       elif short_code == 'ex':
         print(f"See you later {username}")
+        print('--'*13)
+        print('\n')
         break   
 
       else:
         print('*'*3)
         print("Invalid input.") 
         print('*'*3)
-        print('\n')
-            
-     
+        print('\n')                
        
 if __name__ == "__main__":
   main()

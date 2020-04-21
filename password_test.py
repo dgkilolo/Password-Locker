@@ -22,7 +22,6 @@ class TestUser(unittest.TestCase):
     '''
     self.assertEqual(self.new_account.username,"David")
     self.assertEqual(self.new_account.password,"boot")
-
     self.assertEqual(self.new_application.application_name,"Facebook")
     self.assertEqual(self.new_application.application_password,"word")
 
@@ -39,7 +38,6 @@ class TestUser(unittest.TestCase):
     self.new_application.append_application()
     test_credential = Credentials("Twitter","bird") #new credential
     test_credential.append_application()
-
     self.new_application.delete_credential() #method to delete credential object
     self.assertEqual(len(Credentials.credentials_list),1)
 
@@ -50,10 +48,8 @@ class TestUser(unittest.TestCase):
     self.new_application.append_application()
     test_credential = Credentials("Instagram", "gram343") #new credential
     test_credential.append_application()
-
     found_credential = Credentials.find_credential("Instagram")
     self.assertEqual(found_credential.application_name, test_credential.application_name)
-
 
 if __name__ == '__main__':
   unittest.main()
